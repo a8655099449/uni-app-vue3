@@ -6,6 +6,12 @@
       "style": {
         "navigationBarTitleText": "uni-app"
       }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationBarTitleText": "profile"
+      }
     }
   ],
   "globalStyle": {

@@ -124,7 +124,7 @@
       "source.fixAll.eslint": true,
       "source.fixAll.stylelint": true
     },
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "i18n-ally.localesPaths": ["src/locales/lang"],
   "i18n-ally.keystyle": "nested",
