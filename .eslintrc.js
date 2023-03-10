@@ -5,6 +5,11 @@ module.exports = {
     node: true, // Node.js全局变量和Node.js范围
     es6: true, // 启用ES6语法
   },
+  globals: {
+    uni: true,
+    wx: true,
+    getApp: true,
+  },
   parser: 'vue-eslint-parser', // 解析Vue文件的解析器
   parserOptions: {
     parser: '@typescript-eslint/parser', // TypeScript的解析器

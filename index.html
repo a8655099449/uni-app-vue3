@@ -1,20 +1,30 @@
+<!--
+ * @Author: liuxiang liuxiang@163.com
+ * @Date: 2023-03-07 17:18:49
+ * @LastEditors: liuxiang liuxiang@163.com
+ * @LastEditTime: 2023-03-09 14:12:46
+ * @FilePath: /uni-app-vue3/index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <script>
-      var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
-        CSS.supports('top: constant(a)'))
+      var coverSupport =
+        'CSS' in window &&
+        typeof CSS.supports === 'function' &&
+        (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'));
       document.write(
         '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
-        (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+          (coverSupport ? ', viewport-fit=cover' : '') +
+          '" />',
+      );
     </script>
     <title></title>
-    <!--preload-links-->
-    <!--app-context-->
   </head>
   <body>
-    <div id="app"><!--app-html--></div>
+    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
