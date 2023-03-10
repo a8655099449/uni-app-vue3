@@ -15,7 +15,6 @@
       <view v-else-if="selectIndex == 1">
         <center-page></center-page>
       </view>
-
       <view v-else-if="selectIndex == 2">
         <mine-page></mine-page>
       </view>
@@ -26,9 +25,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import indexPage from './home/index.vue';
-import centerPage from './center/index.vue';
-import minePage from './mine/index.vue';
+import centerPage from '../center/index.vue';
+import indexPage from '../home/index.vue';
+import minePage from '../mine/index.vue';
 import Footer from '@/components/Footer/index.vue';
 const selectIndex = ref(0);
 
