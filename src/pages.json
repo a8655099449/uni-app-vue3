@@ -6,12 +6,7 @@
         "navigationBarTitleText": "首页"
       }
     },
-    {
-      "path": "pages/index/index",
-      "style": {
-        "navigationBarTitleText": "uni-app"
-      }
-    },
+
     {
       "path": "pages/message/index",
       "style": {

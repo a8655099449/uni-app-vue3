@@ -1,7 +1,7 @@
 /*
  * @Author: 大步佬 865509949@qq.com
  * @Date: 2022-08-30 14:43:57
- * @LastEditTime: 2023-03-13 09:44:17
+ * @LastEditTime: 2023-03-13 09:52:31
  * @FilePath: \maas-mini\src\utils\request.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -17,7 +17,7 @@ const request = (
     hideLoading = false, // 是否显示loading
     isToast = true, // 当请求错误时是否弹出错误信息
     isMask = false, //全局蒙版
-    isLogin = false,
+    isLogin = false, //是否需要登录
   } = {},
 ) => {
   if (!hideLoading) {
