@@ -21,7 +21,7 @@ module.exports = {
       tsx: true, // 启用TSX
     },
   },
-  plugins: ['@typescript-eslint', 'prettier', 'import'], // 使用的插件
+  plugins: ['@typescript-eslint', 'prettier', 'import', 'html'], // 使用的插件
   extends: [
     'eslint:recommended', // ESLint推荐规则
     'plugin:@typescript-eslint/recommended', // 推荐的TypeScript规则

@@ -8,4 +8,3 @@ commitlint.config.js
 **/*.sh
 
 /public/*
-./src/index.html

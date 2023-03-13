@@ -1,14 +1,14 @@
 /*
  * @Author: 大步佬 865509949@qq.com
  * @Date: 2022-08-30 14:43:57
- * @LastEditTime: 2023-03-13 09:52:31
+ * @LastEditTime: 2023-03-13 11:01:03
  * @FilePath: \maas-mini\src\utils\request.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 // 全局请求封装
 import store from '../../store';
 import { ObtainingEncryptedData, decode } from './encryptionAndDecryption';
-const baseUrl: string = import.meta.env.VITE_BASE_API;
+// const baseUrl: string = import.meta.env.VITE_BASE_API;
 const request = (
   url: string, // 请求路径
   params: any = {}, // 请求参数
@@ -61,7 +61,7 @@ const request = (
             resolve(response);
           }
         } else {
-          // 403处理
+          // 403处理 没有权限访问接口:跳转到指定
           if (data.code === 403) {
             if (navigateToLogin()) {
               return;

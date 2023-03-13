@@ -2,7 +2,7 @@
  * @Author: liuxiang liuxiang@163.com
  * @Date: 2023-02-27 11:07:02
  * @LastEditors: liuxiang liuxiang@163.com
- * @LastEditTime: 2023-03-10 21:33:06
+ * @LastEditTime: 2023-03-13 11:16:04
  * @FilePath: /vue-ts-threejs/src/pages/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -47,7 +47,7 @@ const goSave = () => {
 
 const queryLookFun = async () => {
   const res = await queryLook({});
-  console.log('获取返回数据:', res);
+  console.log('获取返回数据', res);
 };
 </script>
 

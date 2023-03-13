@@ -1,10 +1,10 @@
 /*
- * @Description: 加密和解密
- * @Author: ltm
- * @Date: 2022-6-16 16:47:21
- * @params:
+ * @Author: liuxiang liuxiang@163.com
+ * @Date: 2022-10-17 11:21:17
  * @LastEditors: liuxiang liuxiang@163.com
- * @LastEditTime: 2023-03-09 16:34:55
+ * @LastEditTime: 2023-03-13 10:07:57
+ * @FilePath: /uni-app-vue3/src/utils/request/encryptionAndDecryption.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import CryptoJS from 'crypto-js';
 import hmac from 'crypto-js/hmac-md5';
