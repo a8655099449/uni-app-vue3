@@ -2,7 +2,7 @@
  * @Author: liuxiang liuxiang@163.com
  * @Date: 2023-02-27 11:07:02
  * @LastEditors: liuxiang liuxiang@163.com
- * @LastEditTime: 2023-03-10 16:08:41
+ * @LastEditTime: 2023-03-10 21:33:06
  * @FilePath: /vue-ts-threejs/src/pages/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -11,12 +11,15 @@
     <view class="text-p" @click="goNext"> 首页 </view>
     <view class="content-p" @click="goSave()">点击使用vuex保存</view>
     {{ userInfo }}
+
+    <view class="content-p" @click="queryLookFun">点击发送请求</view>
   </view>
 </template>
 
 <script setup>
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+import { queryLook } from '../../api/index';
 
 const store = useStore();
 const env = import.meta.env;
@@ -40,6 +43,11 @@ const goSave = () => {
       title: '用户数据保存成功',
     });
   });
+};
+
+const queryLookFun = async () => {
+  const res = await queryLook({});
+  console.log('获取返回数据:', res);
 };
 </script>
 

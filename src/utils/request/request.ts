@@ -1,27 +1,23 @@
 /*
  * @Author: 大步佬 865509949@qq.com
  * @Date: 2022-08-30 14:43:57
- * @LastEditTime: 2023-03-09 17:24:01
+ * @LastEditTime: 2023-03-10 21:31:56
  * @FilePath: \maas-mini\src\utils\request.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 // 全局请求封装
 import store from '../../store';
-import { ObtainingEncryptedData, decode } from './encryptionAndDecryption.js';
-const baseUrl = '';
+import { ObtainingEncryptedData, decode } from './encryptionAndDecryption';
+const baseUrl: string = import.meta.env.VITE_BASE_API;
 const request = (
-  url: any, // 请求路径
-  method: any = 'get', // 请求方法s
+  url: string, // 请求路径
   params: any = {}, // 请求参数
-  white = false, // 是否为请求白名单 ，也就是不需要登录也能请求的
   {
+    method = 'get',
     hideLoading = false, // 是否显示loading
-    isBaseUrl = true, // 是否增加BaseUrl
-    isEncode = true, // 是否需要加密数据
     isToast = true, // 当请求错误时是否弹出错误信息
-    isConsole = false, // 是否需要打印参数，以免过多的打印造成刷屏
-    appRequest = false, // 是否是客户端唤起小程序支付页面的请求
     isMask = false, //全局蒙版
+    isLogin = false,
   } = {},
 ) => {
   if (!hideLoading) {
@@ -30,67 +26,34 @@ const request = (
       mask: isMask,
     });
   }
-  if (params && isConsole) {
-    handleConsole({
-      consoleContent: params,
-      title: `${url}requestBodyParams`,
-    });
-  }
-
-  const token = uni.getStorageSync('MAAS_TOKEN');
-  // app跳转小程序直接传递token, 不使用本地token
-  const appToken = uni.getStorageSync('APP_TOKEN') || '';
-
-  // // 执行没有登录的逻辑
-  if (!white && !token && !appToken) {
+  const token = store.state.token;
+  // 执行没有登录的逻辑
+  if (!token && isLogin) {
     return;
-  }
-  if (isBaseUrl) {
-    url = baseUrl + url;
   }
   if (method !== 'get') {
     params = ObtainingEncryptedData(params);
   }
-
+  // url = baseUrl + url;
+  const methodl: any = method;
   return new Promise((resolve, reject) => {
     uni.request({
       url,
-      method,
+      method: methodl,
       header: {
-        Authorization: appRequest ? appToken : token ? `Bearer ${token}` : null,
+        // Authorization: token ? `Bearer ${token}` : null,
         Resource: 'App',
       },
       data: params,
       timeout: 60000,
       success(res) {
         const data: any = res.data;
-        // 百度api 的返回格式
-        if (data.status == 0) {
-          resolve(data);
-          return;
-        }
-        if (data.status === 8) {
-          resolve(data);
-          return;
-        }
-
         if (data && data.code === 200) {
           if (!data.result) {
             resolve(data);
             return;
           }
-
-          let response = data.result;
-          if (isEncode) {
-            response = decode(response);
-          }
-          if (isConsole && response) {
-            handleConsole({
-              consoleContent: response,
-              title: `${url}######responseData`,
-            });
-          }
-
+          const response = decode(data.result);
           try {
             const resp = JSON.parse(response);
             resolve(resp);
@@ -99,27 +62,11 @@ const request = (
           }
         } else {
           // 403处理
-          if (data.code === 403 && !appRequest) {
+          if (data.code === 403) {
             if (navigateToLogin()) {
               return;
             }
-            store.commit('setToken', '');
-            const pageParams = getCurrentPages(); //当前页面栈
-
-            if (pageParams && pageParams.length > 0) {
-              const pageOption: any = pageParams[pageParams.length - 1];
-              if (pageOption && pageOption.$page && pageOption.$page.fullPath) {
-                if (pageOption.$page.fullPath == '/pages/login/index') {
-                  return;
-                }
-              }
-            }
-            uni.redirectTo({
-              url: '/pages/login/index',
-            });
-            return;
           }
-
           if (isToast) {
             showErrMessage(data.msg || '请求出错啦，请重试~');
             setTimeout(function () {
@@ -144,7 +91,7 @@ const request = (
         }
       },
       fail(err) {
-        if (isConsole && err) {
+        if (err) {
           const cons: any = err;
           handleConsole({
             consoleContent: cons,
@@ -167,20 +114,7 @@ const request = (
   });
 };
 function navigateToLogin() {
-  store.commit('setToken', '');
-  const pageParams: any = getCurrentPages(); //当前页面栈
-  if (pageParams && pageParams.length > 0) {
-    const pageOption = pageParams[pageParams.length - 1];
-
-    if (pageOption && pageOption.$page && pageOption.$page.fullPath) {
-      if (pageOption.$page.fullPath == '/pages/login/index') {
-        return true;
-      }
-    }
-  }
-  uni.redirectTo({
-    url: '/pages/login/index',
-  });
+  console.log('请确认是否跳转');
   return true;
 }
 
