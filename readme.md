@@ -2,7 +2,7 @@
  * @Author: liuxiang liuxiang@163.com
  * @Date: 2023-03-06 17:59:28
  * @LastEditors: liuxiang liuxiang@163.com
- * @LastEditTime: 2023-03-13 14:42:13
+ * @LastEditTime: 2023-03-13 16:01:48
  * @FilePath: /uni-app-vue3/readme.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -51,15 +51,6 @@ pnpm i
 │         └─index.vue       组件嵌套可建文件夹嵌套，默认index
 │
 │
-├─config                 业务页面文件存放的目录（小程序：  只存放主页及主包页面）
-│  ├─dev
-│  │  └─baseConfig.ts       系统基础配置 （例如：接口api前缀,版本...）
-│  │  └─baseVars.scss       系统样式配置 （例如：图片前缀，主要在样式中使用）
-│  ├─test
-│  │  └─baseConfig.ts       系统基础配置 （例如：接口api前缀,版本...）
-│  │  └─baseVars.scss       系统样式配置 （例如：图片前缀，主要在样式中使用）
-│  └─prod
-│     └─...
 ├─static                存放应用引用的本地静态资源的目录，注意:（由于小程序对资源200k大小有限制,所以该处只存放必须图标资源）
 ├─libs                  引入第三方库文件
 ├─store                 采用vuex进行数据缓存
