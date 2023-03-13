@@ -1,7 +1,7 @@
 /*
  * @Author: 大步佬 865509949@qq.com
  * @Date: 2022-08-30 14:43:57
- * @LastEditTime: 2023-03-10 21:31:56
+ * @LastEditTime: 2023-03-13 09:44:17
  * @FilePath: \maas-mini\src\utils\request.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -41,7 +41,7 @@ const request = (
       url,
       method: methodl,
       header: {
-        // Authorization: token ? `Bearer ${token}` : null,
+        Authorization: token ? `Bearer ${token}` : '',
         Resource: 'App',
       },
       data: params,
@@ -126,12 +126,16 @@ export const handleConsole = ({ consoleContent = null, title = 'data' }) => {
   console.log(title);
 };
 
+//错误提示
 export const showErrMessage = (msg: string) => {
   setTimeout(() => {
-    Message.info(msg || '请求出错啦，请重试~');
+    uni.showToast({
+      title: msg,
+      icon: 'none',
+    });
   }, 50);
 };
-
+//判断是否json
 const isJson = (data: any) => {
   try {
     JSON.parse(data);
@@ -140,15 +144,6 @@ const isJson = (data: any) => {
     //TODO handle the exception
     return false;
   }
-};
-
-const Message = {
-  info(title = '消息') {
-    uni.showToast({
-      title,
-      icon: 'none',
-    });
-  },
 };
 
 export default request;
