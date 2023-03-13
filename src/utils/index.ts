@@ -1,4 +1,4 @@
-export const Message = {
+export const $Message = {
   info(msg = '普通消息') {
     uni.showToast({
       title: msg,

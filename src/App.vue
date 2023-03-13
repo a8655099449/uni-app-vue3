@@ -6,8 +6,6 @@ onLaunch(() => {
 onShow(() => {
   console.log('App Show');
 });
-
-onHide(() => {});
 </script>
 <style lang="scss">
 .app {
