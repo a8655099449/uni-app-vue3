@@ -2,18 +2,20 @@
  * @Author: liuxiang liuxiang@163.com
  * @Date: 2023-02-27 11:07:02
  * @LastEditors: liuxiang liuxiang@163.com
- * @LastEditTime: 2023-03-14 09:50:59
+ * @LastEditTime: 2023-03-14 09:58:13
  * @FilePath: /vue-ts-threejs/src/pages/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <view class="content-bg">
-    <view class="text-p" @click="goNext"> 点击跳转案例 </view>
+    <view class="text-p" @click="goNext"> 跳转 </view>
     <view class="content-p" @click="goSave()">点击使用vuex保存</view>
-    {{ userInfo }}
 
-    <input type="text" placeholder="请输入" />
+    <view class="content-p">缓存数据 :{{ userInfo }}</view>
+
     <view class="content-p" @click="queryLookFun">点击发送请求</view>
+
+    <input class="input-l" type="text" placeholder="请输入" />
   </view>
 </template>
 
@@ -69,10 +71,20 @@ const queryLookFun = async () => {
     font-size: 30rpx;
     text-align: center;
     width: 100%;
-    height: 30rpx;
-    line-height: 30rpx;
+    height: 50rpx;
+    line-height: 50rpx;
     margin-top: 30rpx;
     color: red;
+  }
+  .input-l {
+    line-height: 70rpx;
+    height: 70rpx;
+    margin-top: 50rpx;
+    border: 1px solid #eee;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    margin-left: 5%;
+    width: 80%;
   }
 }
 </style>
