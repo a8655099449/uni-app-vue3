@@ -2,16 +2,17 @@
  * @Author: liuxiang liuxiang@163.com
  * @Date: 2023-02-27 11:07:02
  * @LastEditors: liuxiang liuxiang@163.com
- * @LastEditTime: 2023-03-13 16:02:56
+ * @LastEditTime: 2023-03-14 09:50:59
  * @FilePath: /vue-ts-threejs/src/pages/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <view class="content-bg">
-    <view class="text-p" @click="goNext"> 首页 </view>
+    <view class="text-p" @click="goNext"> 点击跳转案例 </view>
     <view class="content-p" @click="goSave()">点击使用vuex保存</view>
     {{ userInfo }}
 
+    <input type="text" placeholder="请输入" />
     <view class="content-p" @click="queryLookFun">点击发送请求</view>
   </view>
 </template>
@@ -27,7 +28,7 @@ console.log('获取的当前环境变量', env);
 const userInfo = computed(() => store.state.index.userInfo);
 const goNext = () => {
   uni.navigateTo({
-    url: '/',
+    url: '/pages/next/index',
   });
 };
 

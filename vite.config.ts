@@ -2,7 +2,7 @@
  * @Author: liuxiang liuxiang@163.com
  * @Date: 2023-03-07 17:18:49
  * @LastEditors: liuxiang liuxiang@163.com
- * @LastEditTime: 2023-03-13 14:59:55
+ * @LastEditTime: 2023-03-13 16:53:26
  * @FilePath: /uni-app-vue3/vite.config.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -30,6 +30,28 @@ export default defineConfig(({ mode }) => {
           target: env.VITE_BASE_API,
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+      },
+    },
+
+    build: {
+      //打包环境移除console.log，debugger
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
+      //打包文件按照类型分文件夹显示
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+        },
+        output: {
+          chunkFileNames: 'js/[name]-[hash].js',
+          entryFileNames: 'js/[name]-[hash].js',
+          assetFileNames: '[ext]/[name]-[hash].[ext]',
         },
       },
     },
